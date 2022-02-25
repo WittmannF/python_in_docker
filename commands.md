@@ -35,7 +35,12 @@ docker stop <containerId>
 
 Run container with the name:
 ```
-docker run -t -d --name="jupyter"
+docker run -t -d --name="fastapi" tiangolo/uvicorn-gunicorn-fastapi:python3.8-slim
+```
+
+Run container with name and specifying platform:
+```
+docker run -t -d --name="fastapi" --platform linux/amd64 tiangolo/uvicorn-gunicorn-fastapi:python3.8-slim
 ```
 
 Remove exited container
@@ -66,5 +71,10 @@ docker run --rm -t -d --name=jupyter -p 8888:8888 <imageId>
 Run container with bind volume 
 ```
  docker run --rm -t -d --name=jupyter -p 8888:8888 --mount src="$(pwd)",target=/app,type=bind jupter_v2:latest
+```
+
+Run container with bind volume and platform
+```
+docker run -t -d --name=api --platform linux/amd64 -p 8000:8000 --mount src="$(pwd)",target=/app,type=bind applicant_scoring_api
 ```
 
